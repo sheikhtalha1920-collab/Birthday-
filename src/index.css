@@ -1,0 +1,1022 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600..900;1,600..900&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Nunito", sans-serif;
+  --font-heading: "Nunito", sans-serif;
+  --font-cursive: "Caveat", "Dancing Script", cursive;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #F4F1FA;
+  color: #332F3A;
+  overflow-x: hidden;
+}
+
+/* --- High-Fidelity Claymorphism Shadow Architecture --- */
+.shadow-clayDeep {
+  box-shadow: 
+    30px 30px 60px #cdc6d9,
+    -30px -30px 60px #ffffff,
+    inset 10px 10px 20px rgba(139, 92, 246, 0.05),
+    inset -10px -10px 20px rgba(255, 255, 255, 0.8);
+}
+
+.shadow-clayCard {
+  box-shadow: 
+    16px 16px 32px rgba(160, 150, 180, 0.22),
+    -10px -10px 24px rgba(255, 255, 255, 0.95),
+    inset 6px 6px 12px rgba(244, 63, 94, 0.04),
+    inset -6px -6px 12px rgba(255, 255, 255, 1);
+}
+
+.shadow-clayCardHover {
+  box-shadow: 
+    22px 22px 40px rgba(160, 150, 180, 0.3),
+    -12px -12px 28px rgba(255, 255, 255, 1),
+    inset 6px 6px 12px rgba(244, 63, 94, 0.06),
+    inset -6px -6px 12px rgba(255, 255, 255, 1);
+}
+
+.shadow-clayButton {
+  box-shadow: 
+    12px 12px 24px rgba(244, 63, 94, 0.28),
+    -8px -8px 16px rgba(255, 255, 255, 0.6),
+    inset 4px 4px 8px rgba(255, 255, 255, 0.4),
+    inset -4px -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-clayButtonHover {
+  box-shadow: 
+    16px 16px 28px rgba(244, 63, 94, 0.36),
+    -10px -10px 20px rgba(255, 255, 255, 0.7),
+    inset 4px 4px 8px rgba(255, 255, 255, 0.5),
+    inset -4px -4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.shadow-clayButtonPurple {
+  box-shadow: 
+    12px 12px 24px rgba(124, 58, 237, 0.3),
+    -8px -8px 16px rgba(255, 255, 255, 0.6),
+    inset 4px 4px 8px rgba(255, 255, 255, 0.4),
+    inset -4px -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-clayPressed {
+  box-shadow: 
+    inset 8px 8px 16px #d9d4e3,
+    inset -8px -8px 16px #ffffff;
+}
+
+.shadow-clayInput {
+  box-shadow: 
+    inset 6px 6px 12px #d4cee0,
+    inset -6px -6px 12px #ffffff;
+}
+
+/* Clay Float Animations */
+@keyframes clay-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+@keyframes clay-float-delayed {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(-2deg); }
+}
+
+@keyframes clay-float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+@keyframes clay-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.animate-clay-float {
+  animation: clay-float 8s ease-in-out infinite;
+}
+
+.animate-clay-float-delayed {
+  animation: clay-float-delayed 10s ease-in-out infinite;
+}
+
+.animate-clay-float-slow {
+  animation: clay-float-slow 12s ease-in-out infinite;
+}
+
+.animate-clay-breathe {
+  animation: clay-breathe 6s ease-in-out infinite;
+}
+
+/* --- Premium Background & Lighting Effects --- */
+.ambient-bg {
+  background: radial-gradient(circle at 50% 30%, #0c1020 0%, #04060c 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.glowing-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.4;
+  transition: all 1s ease-in-out;
+}
+
+/* --- String Lights (Setting the Mood) --- */
+.lights-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 10px;
+  z-index: 30;
+  pointer-events: none;
+  transform: translateY(-100%);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lights-container.active {
+  transform: translateY(0);
+}
+
+.light-bulb {
+  width: 14px;
+  height: 20px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  position: relative;
+  background: #ffdb73;
+  box-shadow: 0 2px 10px rgba(255, 219, 115, 0.4);
+  animation: flash-gold 2s infinite alternate;
+}
+
+.light-bulb::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 3px;
+  width: 8px;
+  height: 5px;
+  background: #374151;
+  border-radius: 2px;
+}
+
+.light-bulb::after {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 6px;
+  width: 2px;
+  height: 15px;
+  background: rgba(156, 163, 175, 0.4);
+}
+
+/* Alternating colors for elegant holiday feel */
+.light-bulb:nth-child(2n) {
+  background: #ff758c;
+  box-shadow: 0 2px 10px rgba(255, 117, 140, 0.4);
+  animation: flash-rose 1.6s infinite alternate;
+}
+
+.light-bulb:nth-child(3n) {
+  background: #a78bfa;
+  box-shadow: 0 2px 10px rgba(167, 139, 250, 0.4);
+  animation: flash-purple 2.4s infinite alternate;
+}
+
+@keyframes flash-gold {
+  0%, 100% { opacity: 0.4; box-shadow: 0 1px 3px rgba(255, 219, 115, 0.2); }
+  50% { opacity: 1; box-shadow: 0 8px 24px rgba(255, 219, 115, 0.8), 0 2px 10px rgba(255, 219, 115, 0.6); }
+}
+
+@keyframes flash-rose {
+  0%, 100% { opacity: 0.4; box-shadow: 0 1px 3px rgba(255, 117, 140, 0.2); }
+  50% { opacity: 1; box-shadow: 0 8px 24px rgba(255, 117, 140, 0.8), 0 2px 10px rgba(255, 117, 140, 0.6); }
+}
+
+@keyframes flash-purple {
+  0%, 100% { opacity: 0.4; box-shadow: 0 1px 3px rgba(167, 139, 250, 0.2); }
+  50% { opacity: 1; box-shadow: 0 8px 24px rgba(167, 139, 250, 0.8), 0 2px 10px rgba(167, 139, 250, 0.6); }
+}
+
+
+/* --- Balloons (Claymorphic 3D Floating) --- */
+.balloon-wrapper {
+  position: absolute;
+  bottom: -150px;
+  z-index: 5;
+  pointer-events: none;
+  animation: float-up 14s linear forwards;
+}
+
+.balloon {
+  width: 56px;
+  height: 72px;
+  border-radius: 50% 50% 50% 50% / 42% 42% 58% 58%;
+  position: relative;
+  box-shadow: 
+    inset -8px -12px 18px rgba(0, 0, 0, 0.22), 
+    inset 8px 12px 18px rgba(255, 255, 255, 0.75), 
+    12px 16px 28px rgba(160, 150, 180, 0.28);
+}
+
+.balloon::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  width: 12px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  transform: rotate(-30deg);
+  pointer-events: none;
+}
+
+.balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 8px;
+  border-radius: 3px 3px 50% 50%;
+  background: currentColor;
+  box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.balloon-string {
+  width: 2px;
+  height: 110px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.15));
+  position: absolute;
+  bottom: -114px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-120vh) translateX(var(--drift, 40px)) rotate(var(--rot, 15deg));
+    opacity: 0;
+  }
+}
+
+
+/* --- Confetti (Decorate! & Candle Extinguished) --- */
+.confetti-particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  z-index: 25;
+  pointer-events: none;
+  animation: fall-rotate 6s linear forwards;
+}
+
+@keyframes fall-rotate {
+  0% {
+    transform: translateY(-20px) rotate3d(1, 1, 1, 0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) rotate3d(1, 1, 1, 360deg);
+    opacity: 0;
+  }
+}
+
+
+/* --- Floating Stars Background --- */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: twinkle var(--twinkle-dur, 3s) infinite ease-in-out alternate;
+  pointer-events: none;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.1; transform: scale(0.8); }
+  100% { opacity: 0.8; transform: scale(1.2); }
+}
+
+
+/* --- Heart Animation (Catch My Heart) --- */
+.glowing-heart {
+  animation: heart-pulse 0.8s infinite alternate;
+  filter: drop-shadow(0 0 12px rgba(244, 63, 94, 0.8));
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes heart-pulse {
+  0% { transform: scale(0.95); }
+  100% { transform: scale(1.15); }
+}
+
+
+/* --- Birthday Cake & Animated Flame --- */
+.cake-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 20px 0;
+}
+
+.candle-flame {
+  width: 14px;
+  height: 24px;
+  background: radial-gradient(ellipse at bottom, #ff9d00 0%, #ff5100 50%, #ff0000 100%);
+  border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+  box-shadow: 0 -2px 10px #ff9d00, 0 -4px 20px #ff5100, 0 0 30px rgba(255, 157, 0, 0.6);
+  animation: flicker 0.15s infinite alternate;
+  cursor: pointer;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.candle-flame.extinguished {
+  opacity: 0;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+@keyframes flicker {
+  0% { transform: skewX(-1.5deg) scale(1); }
+  100% { transform: skewX(1.5deg) scale(1.08); }
+}
+
+.animate-flicker {
+  animation: flicker 0.15s infinite alternate;
+}
+
+.animate-smoke {
+  animation: smoke-rise 2.5s ease-out forwards;
+}
+
+@keyframes smoke-rise {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+    transform: translateY(0) scaleX(1);
+  }
+  10% {
+    opacity: 0.85;
+  }
+  100% {
+    stroke-dashoffset: -30;
+    opacity: 0;
+    transform: translateY(-55px) scaleX(1.5);
+  }
+}
+
+/* --- Jhey Interactive Cake Keyframes --- */
+.cake__eyes {
+  transform-origin: center;
+  animation: blink-eyes 4s infinite ease-in-out;
+}
+
+@keyframes blink-eyes {
+  0%, 90%, 100% { transform: scaleY(1); }
+  93%, 97% { transform: scaleY(0); }
+}
+
+@keyframes scale-pop {
+  0% { transform: scale(0); opacity: 0; }
+  70% { transform: scale(1.25); opacity: 0.95; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-scale-pop-1 { animation: scale-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+.animate-scale-pop-2 { animation: scale-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.1s forwards; }
+.animate-scale-pop-3 { animation: scale-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards; }
+.animate-scale-pop-4 { animation: scale-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s forwards; }
+.animate-scale-pop-5 { animation: scale-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s forwards; }
+
+@keyframes smoke-rise-html {
+  0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0; }
+  20% { opacity: 0.6; }
+  100% { transform: translateY(-40px) scale(2.2) rotate(15deg); opacity: 0; }
+}
+
+.animate-smoke {
+  animation: smoke-rise-html 2.5s ease-out forwards;
+}
+
+
+/* --- 3D Flip Cards (Birthday Wishes) --- */
+.flip-card {
+  perspective: 1200px;
+  cursor: pointer;
+  height: 330px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.flip-card-front {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flip-card:hover .flip-card-front {
+  border-color: rgba(244, 117, 140, 0.25);
+  box-shadow: 0 20px 40px -5px rgba(244, 117, 140, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, rgba(12, 8, 24, 0.9) 0%, rgba(24, 12, 38, 0.95) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(168, 85, 247, 0.2);
+  transform: rotateY(180deg);
+}
+
+
+/* --- Scrollable Digital Parchment --- */
+.digital-parchment {
+  background: linear-gradient(180deg, rgba(10, 8, 20, 0.75) 0%, rgba(5, 4, 10, 0.9) 100%);
+  border: 1px solid rgba(183, 110, 121, 0.15);
+  box-shadow: inset 0 0 30px rgba(183, 110, 121, 0.05);
+}
+
+.digital-parchment::-webkit-scrollbar {
+  width: 6px;
+}
+
+.digital-parchment::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.digital-parchment::-webkit-scrollbar-thumb {
+  background: rgba(183, 110, 121, 0.3);
+  border-radius: 3px;
+}
+
+.digital-parchment::-webkit-scrollbar-thumb:hover {
+  background: rgba(183, 110, 121, 0.5);
+}
+
+
+/* --- Soft glow helpers --- */
+.rose-gold-glow {
+  text-shadow: 0 0 10px rgba(183, 110, 121, 0.6), 0 0 20px rgba(183, 110, 121, 0.3);
+}
+
+.neon-glow {
+  text-shadow: 0 0 12px rgba(168, 85, 247, 0.8), 0 0 24px rgba(168, 85, 247, 0.4);
+}
+
+.card-shadow-rose {
+  box-shadow: 0 0 30px rgba(183, 110, 121, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.card-shadow-purple {
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+
+/* --- Velvet Curtain Stage Opener --- */
+.curtain-stage {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  overflow: hidden;
+  background: #020205;
+  pointer-events: auto;
+  transition: visibility 0s linear 2s, opacity 0.5s ease-out 1.5s;
+}
+
+.curtain-stage.open {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.curtain-panel {
+  position: absolute;
+  top: 0;
+  width: 50.5%; /* slight overlap to prevent gaps */
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      to right,
+      #1e0202 0px,
+      #420404 20px,
+      #6b0a0a 40px,
+      #8c1111 60px,
+      #6b0a0a 80px,
+      #420404 100px,
+      #1e0202 120px
+    );
+  background-size: 120px 100%;
+  box-shadow: inset -15px 0 30px rgba(0, 0, 0, 0.7), inset 15px 0 30px rgba(0, 0, 0, 0.7);
+  transition: transform 2.2s cubic-bezier(0.76, 0, 0.24, 1);
+  z-index: 1001;
+}
+
+.curtain-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.8) 100%);
+  pointer-events: none;
+}
+
+.curtain-left {
+  left: 0;
+  transform-origin: left center;
+  border-right: 2px solid #d4af37; /* golden edge trim */
+}
+
+.curtain-right {
+  right: 0;
+  transform-origin: right center;
+  border-left: 2px solid #d4af37; /* golden edge trim */
+}
+
+/* Curtain Pulling Animations */
+.curtain-stage.open .curtain-left {
+  transform: translateX(-100%) scaleX(0.35);
+}
+
+.curtain-stage.open .curtain-right {
+  transform: translateX(100%) scaleX(0.35);
+}
+
+/* The Valance (Top decorative drapery) */
+.curtain-valance {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, #520505, #1f0101);
+  border-bottom: 5px double #d4af37; /* Double golden border */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75);
+  z-index: 1002;
+  transition: transform 1.8s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.curtain-stage.open .curtain-valance {
+  transform: translateY(-100%);
+}
+
+/* Elegant spotlights reflecting on the curtain */
+.curtain-spotlight {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 130%;
+  background: radial-gradient(circle at 50% 0%, rgba(253, 224, 71, 0.15) 0%, rgba(0, 0, 0, 0) 60%);
+  z-index: 1003;
+  pointer-events: none;
+  animation: sweep 8s ease-in-out infinite alternate;
+}
+
+@keyframes sweep {
+  0% { transform: translateX(-60%) rotate(-5deg); }
+  100% { transform: translateX(-40%) rotate(5deg); }
+}
+
+/* Gold Tassels and pull cords */
+.gold-tassel {
+  position: absolute;
+  bottom: 120px;
+  width: 24px;
+  height: 80px;
+  background: linear-gradient(to bottom, #d4af37 0%, #f3e5ab 30%, #aa7c11 100%);
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  z-index: 1004;
+  cursor: pointer;
+  transition: transform 0.3s ease, bottom 2.2s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.gold-tassel:hover {
+  transform: scaleY(1.1) translateY(5px);
+  filter: brightness(1.2);
+}
+
+.gold-tassel-left {
+  left: 48%;
+  transform: translateX(-100%);
+}
+
+.gold-tassel-right {
+  right: 48%;
+  transform: translateX(100%);
+}
+
+.curtain-stage.open .gold-tassel-left {
+  left: 2%;
+  bottom: -100px;
+}
+
+.curtain-stage.open .gold-tassel-right {
+  right: 2%;
+  bottom: -100px;
+}
+
+/* Center Golden Theater Plaque */
+.theater-plaque {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1005;
+  transition: all 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.curtain-stage.open .theater-plaque {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+  pointer-events: none;
+}
+
+/* Shake animation for incorrect passcode entry */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
+  20%, 40%, 60%, 80% { transform: translateX(6px); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Shine effect keyframes */
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 125%; }
+}
+
+
+/* --- Jhey Tompkins Happy Birthday Button & Cake --- */
+.birthday-button {
+  position: relative;
+  transform: scale(1.15);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  --tongue: hsl(4, 80%, 42%);
+  --pupil: hsl(0, 0%, 100%);
+  --icing: hsl(0, 0%, 95%);
+  --stroke: hsl(0, 0%, 10%);
+}
+
+.birthday-button:before {
+  display: none;
+}
+
+.birthday-button:after {
+  display: none;
+}
+
+.birthday-button__button {
+  width: 290px;
+  height: 96px;
+  position: relative;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  background: rgba(15, 23, 42, 0.75); /* Modern deep slate glass */
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.55), 
+              0 0 20px rgba(236, 72, 153, 0.15), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+.birthday-button__button:hover {
+  border-color: rgba(236, 72, 153, 0.5);
+  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.65), 
+              0 0 30px rgba(236, 72, 153, 0.25), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.birthday-button__button.active {
+  width: 220px;
+  height: 28px;
+  border-radius: 50%;
+  transform: translateY(48px);
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%); /* Gorgeous Shiny Gold Cake Stand */
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 24px rgba(217, 119, 6, 0.4), 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.birthday-button__text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.birthday-button__text.active {
+  opacity: 0;
+  transform: scale(0.8) translateY(-20px);
+  pointer-events: none;
+}
+
+.birthday-button__text .char {
+  display: inline-block;
+  color: hsl(var(--hue, 330), 85%, 45%);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.birthday-button__button:hover .birthday-button__text .char {
+  transform: translateY(-8px);
+}
+
+.birthday-button__cake {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0) scale(0);
+  transform-origin: bottom center;
+  width: 310px;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.7s ease;
+}
+
+.birthday-button__cake.active {
+  transform: translate(-50%, -4px) scale(1.75); /* BIGGER CAKE! */
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cake__eye-body {
+  fill: var(--stroke);
+}
+
+.cake__eye-pupil {
+  fill: var(--pupil);
+}
+
+.cake__tongue {
+  fill: var(--tongue);
+}
+
+.cake__mouth-opening {
+  fill: var(--stroke);
+  stroke: var(--stroke);
+}
+
+.cake__sprinkle {
+  --sprinkle: hsl(var(--sprinkle-hue, 0), 100%, 75%);
+  fill: var(--sprinkle);
+  transform: scale(0);
+  transform-origin: center;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cake__sprinkle.active {
+  transform: scale(1);
+}
+
+.cake__frosting--start {
+  fill: var(--frosting);
+  transform: translateY(-10px);
+  transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cake__frosting--start.active {
+  transform: translateY(0);
+}
+
+.cake__frosting--duplicate {
+  fill: var(--frosting);
+  transform: translateY(-10px);
+  transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1) 0.15s;
+}
+
+.cake__frosting--duplicate.active {
+  transform: translateY(0);
+}
+
+.candle__flame {
+  transform: scale(0);
+  transform-origin: center;
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease;
+}
+
+.candle__flame.active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.candle__flame-outer {
+  fill: hsl(22, 100%, 56%);
+}
+
+.candle__flame-inner {
+  fill: hsl(50, 85%, 52%);
+}
+
+.face__stroke {
+  stroke: var(--stroke);
+}
+
+.cake__candle {
+  transform: translateY(25px) scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cake__candle.active {
+  transform: translateY(0) scaleY(1);
+}
+
+/* Flicker animation for candle flame */
+@keyframes flicker {
+  0%, 100% {
+    transform: scale(1) rotate(-1.5deg);
+    filter: drop-shadow(0 0 5px rgba(249, 115, 22, 0.7));
+  }
+  20% {
+    transform: scale(1.08, 0.92) rotate(1.5deg);
+    filter: drop-shadow(0 0 7px rgba(249, 115, 22, 0.95));
+  }
+  40% {
+    transform: scale(0.92, 1.08) rotate(-0.5deg);
+    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.85));
+  }
+  60% {
+    transform: scale(1.04, 0.96) rotate(2deg);
+    filter: drop-shadow(0 0 9px rgba(249, 115, 22, 1));
+  }
+  80% {
+    transform: scale(0.96, 1.04) rotate(-2deg);
+    filter: drop-shadow(0 0 7px rgba(249, 115, 22, 0.8));
+  }
+}
+
+.animate-flicker {
+  animation: flicker 0.2s infinite alternate ease-in-out;
+}
+
+/* Smoke animation when candles are blown out */
+@keyframes smoke {
+  0% {
+    transform: translateY(0) scaleX(1) scaleY(1);
+    opacity: 0.8;
+  }
+  40% {
+    transform: translateY(-50px) translateX(-6px) scaleX(1.4) scaleY(1.4);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-110px) translateX(10px) scaleX(2) scaleY(2);
+    opacity: 0;
+  }
+}
+
+.animate-smoke {
+  animation: smoke 2.2s infinite ease-out;
+}
+
+/* --- Mystical Dreamscape Cosmic Additions --- */
+@keyframes drift-slow {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-drift-slow {
+  animation: drift-slow 8s ease-in-out infinite;
+}
+
+@keyframes orbit-slow {
+  0% { transform: rotate(0deg) translateX(12px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(12px) rotate(-360deg); }
+}
+
+.animate-orbit-slow {
+  animation: orbit-slow 12s linear infinite;
+}
+
+@keyframes pulse-cyan {
+  0%, 100% { box-shadow: 0 0 15px rgba(6, 182, 212, 0.2), inset 0 1px 1px rgba(255,255,255,0.15); }
+  50% { box-shadow: 0 0 35px rgba(6, 182, 212, 0.65), inset 0 1px 2px rgba(255,255,255,0.3); }
+}
+
+@keyframes pulse-magenta {
+  0%, 100% { box-shadow: 0 0 15px rgba(236, 72, 153, 0.2), inset 0 1px 1px rgba(255,255,255,0.15); }
+  50% { box-shadow: 0 0 35px rgba(236, 72, 153, 0.65), inset 0 1px 2px rgba(255,255,255,0.3); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2), inset 0 1px 1px rgba(255,255,255,0.15); }
+  50% { box-shadow: 0 0 35px rgba(245, 158, 11, 0.65), inset 0 1px 2px rgba(255,255,255,0.3); }
+}
+
+.orb-shatter-cyan {
+  animation: pulse-cyan 3s infinite alternate ease-in-out;
+}
+
+.orb-shatter-magenta {
+  animation: pulse-magenta 3s infinite alternate ease-in-out;
+}
+
+.orb-shatter-gold {
+  animation: pulse-gold 3s infinite alternate ease-in-out;
+}
+
+/* Fireflies floating gently in 3D-like depth */
+@keyframes firefly-float {
+  0% { transform: translate(0, 0) scale(0.8); opacity: 0.3; }
+  33% { transform: translate(30px, -40px) scale(1.2); opacity: 0.9; }
+  66% { transform: translate(-20px, -80px) scale(0.9); opacity: 0.6; }
+  100% { transform: translate(0, -120px) scale(0); opacity: 0; }
+}
+
+.firefly {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fef08a 0%, rgba(250, 204, 21, 0) 70%);
+  pointer-events: none;
+}
+
+/* Glow sweep visual trigger */
+@keyframes sweep {
+  0% { left: -100%; }
+  100% { left: 150%; }
+}
+
+.glow-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 30%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+  transform: skewX(-25deg);
+  animation: sweep 2.5s infinite ease-in-out;
+}
+
+
+
+

@@ -1,0 +1,6 @@
+{
+  "name": "Happy Birthday Journey",
+  "description": "An ultra-premium, interactive Happy Birthday journey with cinematic lighting, glassmorphic cards, custom music, a catch-the-heart game, 3D candles, and flip wishes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
