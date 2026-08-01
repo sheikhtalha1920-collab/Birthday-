@@ -403,6 +403,22 @@ Iffat, aap is duniya ke liye ek behtareen tohfa hain. Hamesha yunhi muskurate ra
       id="mystical-birthday-app" 
       className="min-h-screen w-full flex flex-col justify-between font-sans relative overflow-x-hidden select-none transition-colors duration-1000 bg-[#F4F1FA]"
     >
+      {/* Top Hanging Fairy Lights (Toggled in Settings -> Warm Ambient Glow) */}
+      <div className={`lights-container ${ambientLights ? "active" : ""}`}>
+        {Array.from({ length: 24 }).map((_, idx) => (
+          <div 
+            key={idx} 
+            className="light-bulb" 
+            style={{ animationDelay: `${(idx % 6) * 0.25}s` }} 
+          />
+        ))}
+      </div>
+
+      {/* Warm Ambient Glow top beam overlay when ambientLights is active */}
+      {ambientLights && (
+        <div className="fixed top-0 inset-x-0 h-40 bg-gradient-to-b from-amber-300/25 via-pink-300/15 to-transparent pointer-events-none z-20 transition-opacity duration-700 animate-pulse" />
+      )}
+
       {/* High-Fidelity Claymorphism Background Blobs */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden -z-10">
         <div className="absolute -top-[10%] -left-[10%] h-[50vh] w-[50vh] rounded-full bg-[#7C3AED]/10 blur-2xl animate-clay-float transform-gpu" />
@@ -662,11 +678,12 @@ Iffat, aap is duniya ke liye ek behtareen tohfa hain. Hamesha yunhi muskurate ra
                 {/* Switch 1 */}
                 <div className="flex items-center justify-between p-4 rounded-[24px] bg-[#F8F6FC] border border-white/80 shadow-clayCard">
                   <div className="text-left pr-3">
-                    <h3 className="font-heading text-sm text-[#332F3A] font-extrabold">
-                      Warm Ambient Glow
+                    <h3 className="font-heading text-sm text-[#332F3A] font-extrabold flex items-center gap-1.5">
+                      <span>Glowing Fairy Lights</span>
+                      <span className="text-amber-500">✨</span>
                     </h3>
                     <p className="text-xs text-[#635F69]">
-                      Warms up layout with elegant lighting
+                      Hangs glowing party fairy lights at the top
                     </p>
                   </div>
                   <div className="flex items-center gap-2 bg-[#EFEBF5] p-1.5 rounded-full shadow-clayPressed">
