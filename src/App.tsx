@@ -205,7 +205,7 @@ Iffat, aap is duniya ke liye ek behtareen tohfa hain. Hamesha yunhi muskurate ra
 
   // Setup background star dust on mount
   useEffect(() => {
-    const generatedStars = Array.from({ length: 50 }).map((_, i) => ({
+    const generatedStars = Array.from({ length: 20 }).map((_, i) => ({
       id: i,
       top: Math.random() * 100,
       left: Math.random() * 100,
@@ -249,7 +249,7 @@ Iffat, aap is duniya ke liye ek behtareen tohfa hain. Hamesha yunhi muskurate ra
         "#f0abfc", // Fuchsia pastel
         "#f43f5e"  // Bright rose
       ];
-      const balloons = Array.from({ length: 30 }).map((_, i) => ({
+      const balloons = Array.from({ length: 12 }).map((_, i) => ({
         id: i,
         left: Math.random() * 90 + 5,
         delay: Math.random() * 4,
@@ -261,7 +261,7 @@ Iffat, aap is duniya ke liye ek behtareen tohfa hain. Hamesha yunhi muskurate ra
 
       // Gold & Pink glitter confetti
       const goldTones = ["#fcd34d", "#fbbf24", "#f472b6", "#fbcfe8", "#fde047", "#f43f5e"];
-      const confetti = Array.from({ length: 60 }).map((_, i) => ({
+      const confetti = Array.from({ length: 20 }).map((_, i) => ({
         id: i,
         left: Math.random() * 100,
         delay: Math.random() * 3,
@@ -405,23 +405,23 @@ Iffat, aap is duniya ke liye ek behtareen tohfa hain. Hamesha yunhi muskurate ra
     >
       {/* High-Fidelity Claymorphism Background Blobs */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden -z-10">
-        <div className="absolute -top-[10%] -left-[10%] h-[60vh] w-[60vh] rounded-full bg-[#7C3AED]/12 blur-3xl animate-clay-float" />
-        <div className="absolute top-[20%] -right-[10%] h-[60vh] w-[60vh] rounded-full bg-[#EC4899]/12 blur-3xl animate-clay-float-delayed" />
-        <div className="absolute -bottom-[10%] left-[20%] h-[60vh] w-[60vh] rounded-full bg-[#0EA5E9]/12 blur-3xl animate-clay-float-slow" />
-        <div className="absolute top-[40%] left-[30%] h-[40vh] w-[40vh] rounded-full bg-[#F59E0B]/10 blur-3xl animate-clay-breathe" />
+        <div className="absolute -top-[10%] -left-[10%] h-[50vh] w-[50vh] rounded-full bg-[#7C3AED]/10 blur-2xl animate-clay-float transform-gpu" />
+        <div className="absolute top-[20%] -right-[10%] h-[50vh] w-[50vh] rounded-full bg-[#EC4899]/10 blur-2xl animate-clay-float-delayed transform-gpu" />
+        <div className="absolute -bottom-[10%] left-[20%] h-[50vh] w-[50vh] rounded-full bg-[#0EA5E9]/10 blur-2xl animate-clay-float-slow transform-gpu" />
+        <div className="absolute top-[40%] left-[30%] h-[35vh] w-[35vh] rounded-full bg-[#F59E0B]/8 blur-2xl animate-clay-breathe transform-gpu" />
       </div>
 
       {/* Background soft pink/gold stardust particles */}
       {backgroundStars.map((star) => (
         <div 
           key={star.id} 
-          className="absolute rounded-full bg-pink-300 opacity-60 pointer-events-none" 
+          className="absolute rounded-full bg-pink-300/70 pointer-events-none" 
           style={{
             top: `${star.top}%`,
             left: `${star.left}%`,
             width: `${star.size}px`,
             height: `${star.size}px`,
-            filter: "drop-shadow(0 0 6px rgba(244,63,94,0.6))",
+            boxShadow: "0 0 4px rgba(244,63,94,0.5)",
             animation: `twinkle ${3 + star.delay}s infinite alternate`
           }}
         />

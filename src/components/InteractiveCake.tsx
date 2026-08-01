@@ -82,17 +82,8 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({
     }
   }, [muted]);
 
-  // Auto-rotation when not dragging
-  useEffect(() => {
-    if (isDragging) return;
-    let animationFrameId: number;
-    const tick = () => {
-      setRotationY((prev) => (prev + 0.35) % 360);
-      animationFrameId = requestAnimationFrame(tick);
-    };
-    animationFrameId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [isDragging]);
+  // Auto-rotation when not dragging using CSS variable or keyframes
+  const [dragRotation, setDragRotation] = useState(0);
 
   const playSound = (name: keyof NonNullable<typeof soundsRef.current>) => {
     const audio = soundsRef.current?.[name];
@@ -168,7 +159,7 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
     const deltaX = e.clientX - dragStartRef.current;
-    setRotationY((prev) => prev + deltaX * 0.6);
+    setDragRotation((prev) => prev + deltaX * 0.6);
     dragStartRef.current = e.clientX;
   };
 
@@ -184,7 +175,7 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDragging) return;
     const deltaX = e.touches[0].clientX - dragStartRef.current;
-    setRotationY((prev) => prev + deltaX * 0.6);
+    setDragRotation((prev) => prev + deltaX * 0.6);
     dragStartRef.current = e.touches[0].clientX;
   };
 
@@ -355,10 +346,15 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({
         >
           {/* Rotating Turntable Base */}
           <div
-            className="relative w-72 h-72 flex items-center justify-center transition-transform duration-100 ease-out"
+            className={`relative w-72 h-72 flex items-center justify-center ${
+              !isDragging ? "animate-cake-orbit" : ""
+            }`}
             style={{
-              transform: `rotateX(-18deg) rotateY(${rotationY}deg)`,
+              transform: isDragging 
+                ? `rotateX(-18deg) rotateY(${dragRotation}deg)` 
+                : undefined,
               transformStyle: "preserve-3d",
+              willChange: "transform",
             }}
           >
             
